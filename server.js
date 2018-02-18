@@ -18,6 +18,26 @@ const handler = (request, response) => {
       }
       response.end(file);
     })
+  } else if (endpoint === '/node') {
+    message = 'node';
+    response.writeHead(200, {"Content-Type": "text/html"});
+    response.write(message);
+    response.end();
+  } else if (endpoint === '/girls') {
+    message = 'girls';
+    response.writeHead(200, {"Content-Type": "text/html"});
+    response.write(message);
+    response.end();
+  } else {
+    response.writeHead(200, {"Content-Type": "application/json"});
+
+    fs.readFile(__dirname + '/public', (error, file) => {
+      if (error) {
+        console.log(error);
+        return;
+      }
+      response.end(file);
+    })
   }
 };
 
