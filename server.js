@@ -1,12 +1,14 @@
 const http = require('http');
 let message;
 const fs = require('fs');
+const querystring = require('querystring');
 
 const handler = (request, response) => {
   let endpoint = request.url;
   console.log(endpoint);
   let method = request.method;
   console.log(method);
+  let allTheData = '';
 
   if (endpoint === '/') {
     response.writeHead(200, {"Content-Type": "text/html"});
@@ -29,9 +31,9 @@ const handler = (request, response) => {
     response.write(message);
     response.end();
   } else {
-    response.writeHead(200, {"Content-Type": "application/json"});
+    response.writeHead(200, {"Content-Type": "image/jpg"});
 
-    fs.readFile(__dirname + '/public', (error, file) => {
+    fs.readFile(__dirname + '/public/img/image.jpg', (error, file) => {
       if (error) {
         console.log(error);
         return;
@@ -39,7 +41,18 @@ const handler = (request, response) => {
       response.end(file);
     })
   }
+  request.on('data', (chunkOfData) => {
+    allTheData += chunkOfData;
+  });
+
+  request.on('end', () => {
+    let convertedData = querystring.parse(allTheData);
+    console.log(allTheData);
+    response.end();
+  });
 };
+
+
 
 const server = http.createServer(handler);
 
