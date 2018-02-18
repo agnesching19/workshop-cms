@@ -1,0 +1,25 @@
+{
+  "name": "workshop-cms",
+  "version": "1.0.0",
+  "description": "Node basic",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/agnesching19/workshop-cms.git"
+  },
+  "keywords": [
+    "node",
+    "node.js",
+    "tutorial",
+    "workshop"
+  ],
+  "author": "Agnes Ching",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/agnesching19/workshop-cms/issues"
+  },
+  "homepage": "https://github.com/agnesching19/workshop-cms#readme"
+}
